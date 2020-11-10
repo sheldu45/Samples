@@ -161,7 +161,7 @@ class WikimediaDumpDownloader():
                 raise Exception("Specify language")
             #if index aren't present (first download), download them
             if not self.path_index_wikis_dumps:
-                self._update_index()
+                self.update_index()
             
             #build list of href to wrap-up pages found in index. Those contain information of project's name and langage
             list_href = self._get_table_wikis(self.path_index_wikis_dumps)
