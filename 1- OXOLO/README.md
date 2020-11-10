@@ -24,18 +24,13 @@ This code can either be run as command line or refered to as a library
 
 *usage*:
 
-    #create a source folder for the project
-    python3 WikimediaDumpDownloader.py -r "."
-
-    #update indexes
-    python3 WikimediaDumpDownloader.py -u
-
-    #download projects
-    python3 WikimediaDumpDownloader.py -p wikidata
-    python3 WikimediaDumpDownloader.py -p wiktionary -l fr
-
-    #do all above in one step:
+    #download french wiktionary project
     python3 WikimediaDumpDownloader.py -r "." -p wiktionary -l fr
+    #download english wikipedia project (root has been saved in .config file)
+    python3 WikimediaDumpDownloader.py -p wikipedia -l en
+    #download french wiktionary project but updating index to have latest dump
+    python3 WikimediaDumpDownloader.py -p wiktionary -l fr -u
+
     ...
 
     #delete projects
