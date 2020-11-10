@@ -236,11 +236,6 @@ class WikimediaDumpDownloader():
                                         os.remove(self.path_root_project+".temp/"+f)
                                     except(FileNotFoundError):
                                         pass
-                            '''#effacer le dossier temps
-                            for root, dirs, files in os.walk(self.path_root_project+".temp"):
-                                for filename in files:
-                                    os.remove(self.path_root_project+".temp/"+filename)
-                            os.rmdir(self.path_root_project+".temp")'''
         return retour
 
     #returns first xml at expected folder if dump exists, returns None otherwise
@@ -328,21 +323,3 @@ if __name__ == '__main__':
             path = wikimedia_dumps.download_dump(project, langage)
         else:
             wikimedia_dumps.delete_dump(project.lower(), langage.lower())
-
-
-    '''#from html index file we extract the table : date - url ; keeping for further wikidata's dumps per date
-    ##but for now just the url of latest json
-    def get_table_wikidata(self):
-        reg_extr_url = re.compile("^<a href=([^>]+)>([^>]+)</a>")
-        with open(self.path_index_wikidata_dumps) as fp:
-            for line in fp:
-                matcher_reg_extr = reg_extr_url.search(line)
-                if not matcher_reg_extr == None:
-                    value_href = matcher_reg_extr.group(1)
-                    print(value_href)
-        #delete all previous files downloaded in the same emplacement
-        for root, dirs, files in os.walk(self.path_root_project+"wikidata"):
-            for filename in files:
-                os.remove(self.path_root_project+"wikidata/"+filename)
-        subprocess.run(["wget", self.url_wikidata_dump+"/latest-all.json.bz2", "--directory-prefix="+self.path_root_project+"wikidata"])
-    '''
