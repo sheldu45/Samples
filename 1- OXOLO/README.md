@@ -35,7 +35,7 @@ This code can either be run as command line or refered to as a library
     python3 WikimediaDumpDownloader.py -p wiktionary -l fr
 
     #do all above in one step:
-    *python3 WikimediaDumpDownloader.py -r "." -p wiktionary -l fr*
+    python3 WikimediaDumpDownloader.py -r "." -p wiktionary -l fr
     ...
 
     #delete projects
