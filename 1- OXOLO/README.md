@@ -28,8 +28,10 @@ This code can either be run as command line or refered to as a library
     python3 WikimediaDumpDownloader.py -r "." -p wiktionary -l fr
     #download english wikipedia project (root has been saved in .config file)
     python3 WikimediaDumpDownloader.py -p wikipedia -l en
-    #download french wiktionary project but updating index to have latest dump
-    python3 WikimediaDumpDownloader.py -p wiktionary -l fr -u
+    #update index to than download latest dump
+    python3 WikimediaDumpDownloader.py -u
+    #download french wiktionary again with updated dump
+    python3 WikimediaDumpDownloader.py -p wiktionary -l fr
 
     ...
 
