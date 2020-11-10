@@ -43,10 +43,10 @@ This code can either be run as command line or refered to as a library
 
 *usage*:
 
-    import WikimediaDumpDownloader
+    import WikimediaDumpDownloader as wdd
 
     #create a source folder for the project
-    wb = WikimediaDumpDownloader(<path_root_project>)
+    wb = wdd.WikimediaDumpDownloader(".")
 
     #update indexes
     wb.update_index()
@@ -58,3 +58,4 @@ This code can either be run as command line or refered to as a library
     #delete projects
     wb.delete_dump("wikidata")
     wb.delete_dump("wikipedia", "fr") 
+
