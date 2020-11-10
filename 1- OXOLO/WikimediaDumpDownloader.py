@@ -272,7 +272,8 @@ if __name__ == '__main__':
     #root folder to main folder containing the dumps to be downloaded
     parser.add_argument("-r", "--root", help="Root for storing dumps. Compulsory parameter when allready has been specified", default="None")
     #one of wikidata, wikipedia, wikisource and wiktionary
-    parser.add_argument("-p", "--project", help="Project targeted. Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.", default="None", required=True)
+    #required except if -u argument is used
+    parser.add_argument("-p", "--project", help="Project targeted. Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.", default="None")
     #if project is wikidata, this argument is to be skipped
     parser.add_argument("-l", "--langage", help="Language targeted. (i.e. 'en', 'fr', 'de', 'es'...)", default="None")
     #if d request deletion of language in project
@@ -303,6 +304,11 @@ if __name__ == '__main__':
     #throw error if still no path
     if path_root_project == "None":
         raise ValueError("Please specify a path to command line arguments (-r)")
+
+    #unless -u is used, -p argument is required
+    if not update_index == "None" and project == "None":
+        raise ValueError("Please specify a project to command line arguments (-p). Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.")
+
 
     wikimedia_dumps = WikimediaDumpDownloader(path_root_project)
     config_file = open(".config", "w")
