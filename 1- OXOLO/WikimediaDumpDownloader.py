@@ -115,7 +115,7 @@ class WikimediaDumpDownloader():
         self.path_index_wikis_dumps = self._download_file_and_return_absolute_path(self.path_root_project+"/.temp/index_wikis/", self.url_wiki_dumps)
 
     #to get most recent versions of wikimedia project, update indexes 
-    def _update_index(self):
+    def update_index(self):
         self._wget_url_wikidata_dump()
         self._wget_url_wiki_dumps()
 
@@ -137,7 +137,8 @@ class WikimediaDumpDownloader():
         retour = ""
         #case 1: targeted project is wikidata
         if project=="wikidata":
-            if not langage=="None":
+            print("lang", langage)
+            if langage:
                 raise Exception("Wikidata is multilingual, should not target a language while extracting wikidata.")
             else:
                 #delete previous version
