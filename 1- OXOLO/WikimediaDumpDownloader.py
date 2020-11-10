@@ -306,7 +306,7 @@ if __name__ == '__main__':
         raise ValueError("Please specify a path to command line arguments (-r)")
 
     #unless -u is used, -p argument is required
-    if not update_index == "None" and project == "None":
+    if not update_index and project == "None":
         raise ValueError("Please specify a project to command line arguments (-p). Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.")
 
 
