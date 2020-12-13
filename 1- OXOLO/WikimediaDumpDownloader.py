@@ -270,16 +270,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A partir de la racine donné en paramètre, permet de télécharger/supprimer un dump voulu')
 
     #root folder to main folder containing the dumps to be downloaded
-    parser.add_argument("-r", "--root", help="Root for storing dumps. Compulsory parameter when allready has been specified", default="None")
+    parser.add_argument("-r", "--root", help="Root for storing dumps. Compulsory parameter when allready has been specified", default=None)
     #one of wikidata, wikipedia, wikisource and wiktionary
     #required except if -u argument is used
-    parser.add_argument("-p", "--project", help="Project targeted. Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.", default="None")
+    parser.add_argument("-p", "--project", help="Project targeted. Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.", default=None)
     #if project is wikidata, this argument is to be skipped
-    parser.add_argument("-l", "--langage", help="Language targeted. (i.e. 'en', 'fr', 'de', 'es'...)", default="None")
+    parser.add_argument("-l", "--langage", help="Language targeted. (i.e. 'en', 'fr', 'de', 'es'...)", default=None)
     #if d request deletion of language in project
-    parser.add_argument("-d", "--delete", help="Delete mode (takes no argument)", action='store_true', default="None")
+    parser.add_argument("-d", "--delete", help="Delete mode (takes no argument)", action='store_true', default=None)
     #use this arument to update index files pointing to dumps
-    parser.add_argument("-u", "--update_index", help="Update html index files. Use it when you want to update the date of the dumps, don't if you want to keep the same date as previous session. (takes no argument)", action='store_true', default="None")
+    parser.add_argument("-u", "--update_index", help="Update html index files. Use it when you want to update the date of the dumps, don't if you want to keep the same date as previous session. (takes no argument)", action='store_true', default=None)
 
     '''#a feature we could integrate in future would be option to download dumps from n last days (history of modification)
     parser.add_argument("-t", "--time", help="télécharger les dumps des d derniers jours (default = latest).",  default='latest')
@@ -293,7 +293,7 @@ if __name__ == '__main__':
     delete = args.delete
 
     #try to upload from config file if none in cmd line arguments
-    if path_root_project == "None":
+    if not path_root_project:
         try:
             with open(".config") as fp:
                 for line in fp:
@@ -302,11 +302,11 @@ if __name__ == '__main__':
             raise ValueError("Please specify a path to command line arguments (-r)")
 
     #throw error if still no path
-    if path_root_project == "None":
+    if not path_root_project:
         raise ValueError("Please specify a path to command line arguments (-r)")
 
     #unless -u is used, -p argument is required
-    if not update_index and project == "None":
+    if not update_index and not project:
         raise ValueError("Please specify a project to command line arguments (-p). Can be either 'wikidata', 'wikipedia', 'wikisource', 'wiktionary'.")
 
 
@@ -316,17 +316,17 @@ if __name__ == '__main__':
     config_file.close()
 
     #throw error if update-index is used uncorrectly
-    if not update_index == "None":
-        if not project == "None":
+    if update_index:
+        if project:
             raise ValueError("Do not specify project if updating indexes.")
-        elif not langage == "None":
+        elif langage:
             raise ValueError("Do not specify languages if updating indexes.")
-        elif not delete == "None":
+        elif delete:
             raise ValueError("Do not specify deletion if updating indexes.")
         else:
             wikimedia_dumps.update_index()
     else:
-        if delete == "None":
+        if not delete:
             path = wikimedia_dumps.download_dump(project, langage)
         else:
             wikimedia_dumps.delete_dump(project.lower(), langage.lower())
