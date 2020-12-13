@@ -467,7 +467,7 @@ if __name__ == '__main__':
     parser.add_argument("-i", "--ign", help="Include param not to 'ignore' out of range errors during title normalization. Such errors will than stop execution, and title won't be normalized (instead of only being printed in error file).", action='store_false', default=True)
 
     args = parser.parse_args()
-    wpp = Wiki_Page_Parser(args.ign, args.title, args.std)
+    wpp = WikiPageParser(args.ign, args.title, args.std)
 
     #define section titles normalisation function
     if args.norm:
