@@ -464,7 +464,7 @@ if __name__ == '__main__':
     parser.add_argument("-n", "--norm", help="Index of bracketed expressions to normalize titles into.", default=None)
     parser.add_argument("-t", "--title", help="Name of bracketed expressions to extract content from.", default=None)
     parser.add_argument("-x", "--extr", help="Either a index or slice in format x:y (of element of split) or a regular expression (which variable name should match to extract value of)", default=None)
-    parser.add_argument("-i", "--ign", help="Include param not to 'ignore' out of range errors during title normalization. Such errors will than be printed in error file, instead of stoping execution, and title won't be normalized.", action='store_false', default=True)
+    parser.add_argument("-i", "--ign", help="Include param not to 'ignore' out of range errors during title normalization. Such errors will than stop execution, and title won't be normalized (instead of only being printed in error file).", action='store_false', default=True)
 
     args = parser.parse_args()
     wpp = Wiki_Page_Parser(args.ign, args.title, args.std)

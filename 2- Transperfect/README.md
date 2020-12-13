@@ -36,7 +36,7 @@ Command line parameters are :
     * -n <...> Index of bracketed expressions to normalize titles into.
     * -t <...> Name of bracketed expressions to extract content from.
     * -x <...> Either a index or slice in format x:y (of element of split) or a regular expression (which variable name should match to extract value of)
-    * -i 
+    * -i Include param not to 'ignore' out of range errors during title normalization. Such errors will than stop execution, and title won't be normalized (instead of only being printed in error file).
 
 
 *usage*:
