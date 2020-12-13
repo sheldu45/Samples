@@ -42,11 +42,11 @@ Command line parameters are :
 *usage*:
 
     #extract from english wiktionary dictionary with Language, Part-of-Speech and Pronuciation as a JSON
-    python3 Section_Splitter_transperfect.py -l "en" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -t "IPA" -x 2: -s
+    python3 WikiPageParser.py -l "en" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -t "IPA" -x 2: -s
     #extract from german wiktionary dictionary with Language, Part-of-Speech and Pronuciation as a JSON
-    python3 Section_Splitter_transperfect.py -l "de" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -t "Lautschrift" -x 1 -n 1 -s
+    python3 WikiPageParser.py -l "de" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -t "Lautschrift" -x 1 -n 1 -s
     #extract from french wiktionary dictionary with Language, Part-of-Speech and Pronuciation as a JSON
-    python3 Section_Splitter_transperfect.py -l "fr" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -n 1 -t "pron" -x 1 -s
+    python3 WikiPageParser.py -l "fr" -p <Path for dump> -o "out_file" -e "errors_file" -c "prons" -n 1 -t "pron" -x 1 -s
 
     #extract page links from wikipedia dumps as a JSON
-    python3 Section_Splitter_transperfect.py -l "fr" -p <Path for dump> -o "out_file" -e "errors_file" -c "links" -x 0 -b "[[" -k "]]" -s
+    python3 WikiPageParser.py -l "fr" -p <Path for dump> -o "out_file" -e "errors_file" -c "links" -x 0 -b "[[" -k "]]" -s
